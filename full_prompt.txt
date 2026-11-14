@@ -1,0 +1,1637 @@
+# MASTER DEVELOPMENT PROMPT
+# AI Career Assistant – Complete AI-Powered Career & Resume SaaS Platform
+
+## 1. PROJECT OVERVIEW
+
+Act as a Senior Software Architect, Python Backend Developer, React Developer, AI Engineer, Database Architect, UI/UX Designer, Security Engineer, and DevOps Engineer.
+
+Build a complete, production-ready AI-powered Career Development SaaS platform.
+
+This is not just a CV builder. It should be a comprehensive AI Career Assistant that helps users:
+
+1. Create professional resumes.
+2. Optimize resumes for specific job descriptions.
+3. Analyze ATS compatibility.
+4. Identify missing skills.
+5. Discover relevant job opportunities.
+6. Prepare for job interviews.
+7. Improve technical and professional skills.
+8. Generate cover letters.
+9. Optimize LinkedIn profiles.
+10. Generate personal portfolio websites.
+11. Track job applications.
+12. Understand career opportunities and salary expectations.
+
+The platform must support multiple AI providers and models that administrators can configure dynamically through the admin dashboard.
+
+Build this as a scalable multi-user SaaS application with subscription plans, AI credit management, usage monitoring, and complete administrative control.
+
+---
+
+# 2. TECHNOLOGY STACK
+
+## Frontend
+- React.js
+- Vite
+- TypeScript
+- Tailwind CSS
+- Responsive design
+- Reusable component architecture
+- Modern SaaS dashboard UI
+
+## Backend
+- Python
+- FastAPI
+- REST API architecture
+- Pydantic
+- SQLAlchemy ORM
+- Alembic migrations
+- JWT authentication
+- Role-based access control
+
+## Database
+- PostgreSQL
+
+## AI Integration
+Build a provider-independent AI engine.
+
+Support:
+- OpenAI
+- Anthropic Claude
+- Google Gemini
+- DeepSeek
+- Groq
+- OpenRouter
+- Other OpenAI-compatible providers
+
+Do not hardcode provider names, models, API endpoints, or credentials.
+
+## Infrastructure
+- Docker
+- Nginx
+- Gunicorn/Uvicorn
+- Redis when required
+- Celery for background processing when required
+- S3-compatible object storage
+- PostgreSQL backups
+- Structured application logging
+
+---
+
+# 3. AUTHENTICATION AND USER MANAGEMENT
+
+Implement:
+
+- User registration.
+- Email verification.
+- Login and logout.
+- Forgot password.
+- Password reset.
+- JWT access and refresh tokens.
+- Google authentication.
+- User profile management.
+- Profile picture upload.
+- Account deletion.
+- Role-based permissions.
+
+Roles:
+- Super Admin
+- Admin
+- User
+
+Ensure complete user data isolation.
+
+Users must never be able to access another user's resumes, documents, subscriptions, or personal information.
+
+---
+
+# 4. USER DASHBOARD
+
+Create a modern dashboard with:
+
+- Total uploaded resumes.
+- Total generated resumes.
+- Recent resume activities.
+- Saved jobs.
+- Upcoming interviews.
+- Application statistics.
+- Current subscription.
+- Remaining AI credits.
+- AI usage statistics.
+- Career improvement progress.
+- Recent skill gap analysis.
+- Recommended actions.
+
+Provide a clean sidebar navigation.
+
+Main navigation:
+
+1. Dashboard
+2. My Resumes
+3. AI Resume Builder
+4. ATS Resume Scanner
+5. Job Recommendations
+6. Skill Gap Analysis
+7. Career Roadmap
+8. AI Mock Interviews
+9. Cover Letter Generator
+10. LinkedIn Optimizer
+11. Portfolio Builder
+12. Job Application Tracker
+13. Career & Salary Insights
+14. Subscription & Billing
+15. Settings
+
+Only show features that the user's subscription permits, while displaying upgrade options for restricted features.
+
+---
+
+# 5. AI RESUME BUILDER AND CV UPLOAD
+
+This is the core functionality.
+
+## Supported Formats
+
+Allow:
+- PDF uploads.
+- DOCX uploads.
+
+## Resume Extraction
+
+After uploading a CV, extract and structure:
+
+- Full name.
+- Contact details.
+- Professional summary.
+- Technical skills.
+- Soft skills.
+- Employment history.
+- Job responsibilities.
+- Projects.
+- Education.
+- Certifications.
+- Achievements.
+- Languages.
+- Professional links.
+
+Convert the extracted information into structured JSON.
+
+Allow users to review and correct extracted information.
+
+Preserve the original uploaded document.
+
+## Resume Profiles
+
+Allow users to maintain multiple resume profiles.
+
+Examples:
+- Python Developer.
+- Full Stack Developer.
+- Backend Developer.
+- Software Engineer.
+- Data Analyst.
+
+Each profile should maintain its own resume versions and relevant job applications.
+
+---
+
+# 6. JOB DESCRIPTION ANALYSIS
+
+Allow users to:
+
+- Paste job descriptions.
+- Upload job descriptions.
+- Enter job titles.
+- Enter company names.
+- Add job application URLs.
+
+Extract:
+
+- Required skills.
+- Preferred skills.
+- Technical requirements.
+- Experience requirements.
+- Educational requirements.
+- Job responsibilities.
+- Industry knowledge.
+- Soft skills.
+- Certifications.
+- Keywords.
+
+Save job descriptions for future use.
+
+---
+
+# 7. AI ATS RESUME SCANNER
+
+Build a detailed ATS compatibility analyzer.
+
+Compare the uploaded CV with the selected job description.
+
+Analyze:
+
+- Keyword matching.
+- Required skill coverage.
+- Experience relevance.
+- Resume structure.
+- Formatting compatibility.
+- Professional summary.
+- Education requirements.
+- Missing sections.
+- Weak descriptions.
+- Relevant achievements.
+
+Generate an estimated compatibility score with a detailed breakdown.
+
+Show:
+
+- Overall compatibility.
+- Matched keywords.
+- Missing keywords.
+- Relevant experience.
+- Formatting problems.
+- Improvement recommendations.
+
+Important:
+
+Do not claim to reproduce the exact scoring algorithm of external ATS systems.
+
+Explain that the score is an internal estimate, not a guarantee of shortlisting.
+
+Provide actionable recommendations for improving the CV.
+
+---
+
+# 8. AI RESUME TAILORING
+
+Generate a job-specific resume based on the original CV and selected job description.
+
+The AI should:
+
+- Rewrite the professional summary.
+- Highlight relevant existing skills.
+- Improve work experience descriptions.
+- Rewrite bullet points professionally.
+- Improve project descriptions.
+- Use relevant keywords naturally.
+- Improve grammar and readability.
+- Prioritize relevant experience.
+- Remove unnecessary repetition.
+- Improve section organization.
+- Optimize formatting for ATS compatibility.
+
+## Critical Truthfulness Rules
+
+Never:
+
+- Invent employment history.
+- Invent technical skills.
+- Fabricate projects.
+- Create fake certifications.
+- Increase years of experience.
+- Invent achievements or measurable results.
+- Claim experience with technologies without evidence.
+
+If information is missing, ask the user to confirm it.
+
+The objective is to improve presentation, not falsify qualifications.
+
+---
+
+# 9. INTERACTIVE RESUME EDITOR
+
+Build a professional resume editor.
+
+Users can:
+
+- Edit all resume sections.
+- Add or remove sections.
+- Rearrange sections.
+- Edit individual bullet points.
+- Regenerate selected sections using AI.
+- Compare original and tailored versions.
+- Restore previous versions.
+- Save drafts.
+- Duplicate resumes.
+
+Provide a live resume preview.
+
+## Resume Templates
+
+Create templates for:
+
+- Modern Professional.
+- Classic Professional.
+- Minimalist.
+- Software Engineer.
+- Technical Resume.
+- Fresher Resume.
+- Experienced Professional.
+
+Prioritize ATS-friendly, single-column templates.
+
+Avoid complex tables, text boxes, and graphics in ATS mode.
+
+## Resume Export
+
+Support:
+- PDF.
+- DOCX.
+
+Maintain professional typography, spacing, page breaks, and formatting.
+
+---
+
+# 10. AI SKILL GAP ANALYSIS
+
+Create a dedicated Skill Gap Analysis module.
+
+After CV upload and job description submission, identify:
+
+- Skills already present.
+- Skills partially demonstrated.
+- Skills not found in the CV.
+- Required qualifications not found.
+- Preferred skills not found.
+- Experience gaps.
+- Technical knowledge gaps.
+
+Example:
+
+Target Position: Python Full Stack Developer.
+
+Illustrative analysis:
+
+- Python: Matched.
+- Django: Matched.
+- REST APIs: Matched.
+- PostgreSQL: Matched.
+- React: Partially matched.
+- AWS: Not found in CV.
+- Docker: Not found in CV.
+- CI/CD: Not found in CV.
+
+Do not assume that a skill is genuinely missing just because it is absent from the CV.
+
+Allow users to confirm whether they possess each skill.
+
+## Skill Recommendations
+
+For every gap, explain:
+
+- Why the skill matters.
+- Whether it is mandatory or preferred.
+- Expected proficiency level.
+- What the user should learn.
+- Recommended practical exercises.
+- Suggested portfolio projects.
+- Estimated learning duration.
+
+Prioritize:
+
+- High Priority.
+- Medium Priority.
+- Low Priority.
+
+Allow users to update skill status:
+
+- Not Started.
+- Learning.
+- Practicing.
+- Completed.
+
+Re-run skill gap analysis when the user updates their CV.
+
+---
+
+# 11. AI CAREER READINESS REPORT
+
+Generate a detailed career readiness report for each selected job.
+
+Include:
+
+- Technical readiness.
+- Experience relevance.
+- Education compatibility.
+- Skill compatibility.
+- Qualification coverage.
+- Areas requiring improvement.
+
+Generate an overall readiness score with a transparent scoring methodology.
+
+Show the individual factors contributing to the score.
+
+This is an advisory estimate, not a prediction of hiring success.
+
+Provide personalized recommendations explaining what the user should improve before applying.
+
+Maintain historical reports so users can compare their progress.
+
+---
+
+# 12. AI CAREER ROADMAP
+
+Generate personalized learning roadmaps based on identified skill gaps and career goals.
+
+Example:
+
+Target: Backend Developer.
+
+Week 1:
+- Advanced Python.
+- REST API fundamentals.
+
+Week 2:
+- PostgreSQL.
+- Database optimization.
+
+Week 3:
+- Docker.
+- Containerization.
+
+Week 4:
+- AWS deployment.
+- Practical backend project.
+
+Allow users to:
+
+- Create career goals.
+- Save roadmaps.
+- Track learning progress.
+- Mark topics as completed.
+- Add personal notes.
+- Add custom learning activities.
+- Regenerate roadmaps.
+- View progress reports.
+
+Recommendations should be based on the user's current experience and target role.
+
+---
+
+# 13. AI JOB RECOMMENDATION ENGINE
+
+Create a job recommendation system.
+
+Analyze user resumes and suggest relevant jobs.
+
+Display:
+
+- Job title.
+- Company.
+- Location.
+- Work arrangement.
+- Required experience.
+- Salary range when available.
+- Required skills.
+- Job description.
+- Application URL.
+- Job compatibility estimate.
+
+Support filters:
+
+- Remote.
+- Hybrid.
+- On-site.
+- Location.
+- Experience level.
+- Salary range.
+- Job category.
+
+Use legitimate job listing APIs or permitted data sources.
+
+Do not scrape websites in violation of their terms.
+
+Clearly display source and last-verified date.
+
+Allow users to save jobs and track applications.
+
+Do not invent job openings or salary information.
+
+---
+
+# 14. AI MOCK INTERVIEW PLATFORM
+
+Build an AI-powered interview practice module.
+
+## Interview Types
+
+- HR interview.
+- Technical interview.
+- Behavioral interview.
+- Project-based interview.
+- Job-description-specific interview.
+- Experience-based interview.
+
+## Interview Workflow
+
+1. User selects a target job.
+2. AI analyzes the job description.
+3. AI generates interview questions.
+4. User answers questions.
+5. AI evaluates responses.
+6. AI generates a detailed report.
+
+## Evaluation
+
+Analyze:
+
+- Answer relevance.
+- Technical correctness.
+- Communication clarity.
+- Answer structure.
+- Confidence indicators where reasonably measurable.
+- Missing important points.
+
+Provide:
+
+- Score per answer.
+- Improvement suggestions.
+- Example improved answers.
+- Overall interview report.
+
+## Voice Interview
+
+Support voice-based interviews as an advanced feature.
+
+Implement:
+
+- Speech-to-text.
+- Text-to-speech.
+- Voice answer recording.
+- Interview playback.
+- Conversation history.
+
+Keep voice processing provider-independent where possible.
+
+Do not claim to measure psychological confidence or personality accurately from voice.
+
+---
+
+# 15. AI COVER LETTER GENERATOR
+
+Generate personalized cover letters using:
+
+- User CV.
+- Selected job description.
+- Company information.
+- Target role.
+
+Allow users to:
+
+- Select tone.
+- Select length.
+- Edit generated letters.
+- Save versions.
+- Download PDF/DOCX.
+- Generate recruiter messages.
+- Generate job application emails.
+- Generate follow-up emails.
+
+Never invent experience or qualifications.
+
+---
+
+# 16. LINKEDIN PROFILE OPTIMIZER
+
+Allow users to enter or upload their LinkedIn profile information.
+
+Generate recommendations for:
+
+- Headline.
+- About section.
+- Experience descriptions.
+- Skills.
+- Featured projects.
+- Professional summary.
+
+Allow users to compare their original and improved content.
+
+Provide copy-ready content.
+
+Do not require unauthorized access to LinkedIn accounts.
+
+---
+
+# 17. AI PORTFOLIO WEBSITE GENERATOR
+
+Generate professional portfolio websites from user-approved CV information.
+
+Features:
+
+- Multiple templates.
+- Personal introduction.
+- Work experience.
+- Projects.
+- Skills.
+- Education.
+- Certifications.
+- Contact section.
+- Social links.
+
+Allow users to:
+
+- Customize colors.
+- Customize sections.
+- Add projects.
+- Edit content.
+- Preview portfolio.
+- Publish portfolio.
+
+Support unique portfolio URLs and configurable custom domains.
+
+Do not publish personal information without explicit user confirmation.
+
+---
+
+# 18. JOB APPLICATION TRACKER
+
+Build a complete application management dashboard.
+
+Allow users to add jobs manually or from job recommendations.
+
+Application statuses:
+
+- Interested.
+- Preparing.
+- Applied.
+- Screening.
+- Interview Scheduled.
+- Interview Completed.
+- Offer Received.
+- Rejected.
+- Withdrawn.
+
+Features:
+
+- Company details.
+- Job title.
+- Applied date.
+- Application URL.
+- Associated resume.
+- Associated cover letter.
+- Interview dates.
+- Recruiter details.
+- Notes.
+- Follow-up dates.
+- Reminders.
+
+Provide Kanban and list views.
+
+Display application statistics and conversion rates.
+
+---
+
+# 19. CAREER AND SALARY INSIGHTS
+
+Build a career research module.
+
+Features:
+
+- Career path recommendations.
+- Alternative job titles.
+- Salary range estimates.
+- Experience-based salary comparisons.
+- In-demand skills.
+- Career progression.
+- Industry trends.
+- Location-based comparisons.
+
+Use reliable external data sources where available.
+
+Clearly distinguish verified salary information from estimates.
+
+Never fabricate salary data.
+
+---
+
+# 20. AI CAREER ASSISTANT CHAT
+
+Create a centralized AI Career Assistant.
+
+The assistant should understand user-approved information from:
+
+- CV profiles.
+- Selected job descriptions.
+- Skill gap reports.
+- Career roadmaps.
+- Interview history.
+- Job applications.
+
+Example questions:
+
+- Which jobs suit my current experience?
+- Which skills should I learn first?
+- Can I apply for this job?
+- How should I prepare for this interview?
+- Improve my professional summary.
+- Suggest projects for my career.
+- Help me negotiate a salary.
+- What should I improve to become a senior developer?
+
+Allow users to select available AI models if permitted by their subscription.
+
+Provide conversation history.
+
+Ensure users can control which personal documents are used as AI context.
+
+---
+
+# 21. SUBSCRIPTION AND BILLING MANAGEMENT
+
+Build a fully dynamic subscription management system.
+
+## Admin Subscription Management
+
+Admin must be able to:
+
+- Create subscription plans.
+- Edit plans.
+- Activate/deactivate plans.
+- Set monthly prices.
+- Set yearly prices.
+- Configure currencies.
+- Configure free trials.
+- Set AI credit allocations.
+- Set feature permissions.
+- Set usage limits.
+- Set resume generation limits.
+- Set AI analysis limits.
+- Set file upload limits.
+- Configure AI model access.
+- Configure template access.
+- Configure interview limits.
+- Configure priority processing.
+
+All plans must be manageable through the admin dashboard without code changes.
+
+## User Subscription Management
+
+Create a dedicated pricing and billing page.
+
+Users can:
+
+- Compare plans.
+- View features.
+- Purchase subscriptions.
+- Upgrade plans.
+- Downgrade plans.
+- Cancel subscriptions.
+- View payment history.
+- Download invoices.
+- View renewal dates.
+- Check remaining credits.
+- View usage statistics.
+
+## Example Plans
+
+Provide configurable default plans:
+
+### Free
+- Limited CV uploads.
+- Basic ATS analysis.
+- Limited resume generations.
+- Basic skill gap analysis.
+- PDF/DOCX downloads.
+
+### Pro
+- More resume generations.
+- Advanced ATS analysis.
+- Full skill gap analysis.
+- Career roadmaps.
+- Cover letter generation.
+- LinkedIn optimization.
+- Limited mock interviews.
+
+### Premium
+- Higher AI usage.
+- Advanced model access.
+- More mock interviews.
+- Portfolio generator.
+- Job recommendation.
+- Advanced career reports.
+- Priority processing.
+
+These are default examples. Admin must be able to change all features, limits, and prices.
+
+## Payment Integration
+
+Create a payment gateway abstraction.
+
+Prepare integrations for:
+
+- Razorpay.
+- Stripe.
+
+Implement:
+
+- Server-side payment verification.
+- Webhook verification.
+- Subscription activation.
+- Subscription renewals.
+- Cancellation.
+- Payment failures.
+- Refund records.
+- Invoice generation.
+
+Never activate subscriptions based only on frontend payment success.
+
+## Credits and Usage
+
+Implement a credit-based usage system.
+
+Track credits consumed by:
+
+- Resume analysis.
+- Resume generation.
+- AI chat.
+- Mock interviews.
+- Cover letter generation.
+- Portfolio generation.
+
+Allow admin to grant, deduct, and adjust credits.
+
+Display usage history.
+
+Enforce all subscription limits on the backend.
+
+---
+
+# 22. ADMIN DASHBOARD
+
+Create a dedicated, secure admin application or admin section.
+
+Use role-based access control.
+
+## A. Dashboard Analytics
+
+Display:
+
+- Total users.
+- Active users.
+- New registrations.
+- Paid subscriptions.
+- Free subscriptions.
+- Monthly recurring revenue.
+- Resume generations.
+- AI requests.
+- AI API expenses.
+- Credit consumption.
+- Most-used features.
+- Most-used AI models.
+
+## B. User Management
+
+Admin can:
+
+- View users.
+- Search users.
+- Filter users.
+- Activate/deactivate accounts.
+- View subscription status.
+- View usage statistics.
+- Manage credits.
+- Review account activity.
+- Handle support requests.
+
+Protect user documents and personal information with strict access permissions.
+
+## C. AI Provider Management
+
+Allow admins to add and configure AI providers.
+
+Fields:
+
+- Provider name.
+- API endpoint.
+- API key.
+- Authentication method.
+- Provider status.
+- Supported capabilities.
+
+Encrypt API credentials at rest.
+
+Never expose API keys to frontend users.
+
+## D. AI Model Management
+
+Admin can:
+
+- Add models.
+- Edit models.
+- Enable/disable models.
+- Set model identifiers.
+- Configure token limits.
+- Configure temperature.
+- Configure input/output pricing.
+- Set default models.
+- Set fallback models.
+- Set task-specific models.
+- Assign models to subscription plans.
+
+Different models can be assigned to:
+
+- Resume parsing.
+- Resume analysis.
+- Resume generation.
+- Skill gap analysis.
+- Career recommendations.
+- Interview evaluation.
+- AI chat.
+
+The system must retrieve model configurations dynamically from PostgreSQL.
+
+Do not require source code changes when adding a new compatible model.
+
+## E. AI Cost Analytics
+
+Track:
+
+- Provider.
+- Model.
+- User.
+- Request type.
+- Input tokens.
+- Output tokens.
+- Estimated cost.
+- Actual billed cost when available.
+- Request duration.
+- Request status.
+- Timestamp.
+
+Provide charts for AI expenditure and model efficiency.
+
+## F. Subscription Administration
+
+Admin can manage:
+
+- Plans.
+- Features.
+- Pricing.
+- User subscriptions.
+- Payments.
+- Credits.
+- Coupons.
+- Refund records.
+- Promotional offers.
+
+## G. System Configuration
+
+Allow admin to manage:
+
+- Application name.
+- Logo.
+- Branding.
+- Email settings.
+- File upload limits.
+- Feature availability.
+- Default AI models.
+- Maintenance mode.
+- Usage restrictions.
+
+---
+
+# 23. COMPETITOR INTELLIGENCE AND MARKET RESEARCH
+
+Add a Competitor Intelligence module to the admin dashboard.
+
+The purpose is to help the platform owner understand competing AI resume and career platforms and identify opportunities for product improvement.
+
+## Competitor Management
+
+Admin can:
+
+- Add competitor platforms.
+- Edit competitor information.
+- Remove competitors.
+- Store competitor website URLs.
+- Add notes.
+- Assign competitor categories.
+
+Example competitor categories:
+
+- AI resume builders.
+- ATS scanners.
+- Career development platforms.
+- AI interview platforms.
+- Job recommendation platforms.
+- Portfolio generators.
+
+## Competitor Analysis
+
+For each competitor, maintain:
+
+- Product name.
+- Website.
+- Main features.
+- Pricing information.
+- Free plan availability.
+- Subscription structure.
+- AI capabilities.
+- Resume templates.
+- Interview capabilities.
+- Unique selling points.
+- Strengths.
+- Weaknesses.
+
+## Market Research
+
+Provide a manual research option and configurable scheduled research.
+
+Research publicly available information such as:
+
+- Newly introduced features.
+- Pricing changes.
+- New AI capabilities.
+- New subscription plans.
+- Product positioning.
+- User feedback and public reviews.
+- Market trends.
+
+Use permitted sources and respect robots.txt, website terms, rate limits, and applicable privacy requirements.
+
+Do not bypass authentication or access restrictions.
+
+Store:
+
+- Research date.
+- Source URL.
+- Collected information.
+- Verification status.
+- Research summary.
+
+Distinguish verified facts from AI-generated interpretations.
+
+## AI Competitor Insights
+
+Generate suggestions such as:
+
+- Features competitors offer that our platform lacks.
+- Features that could differentiate our platform.
+- Potential improvements to our pricing.
+- Opportunities for new subscription features.
+- Common customer complaints.
+- Product improvement priorities.
+
+Allow admin to review and approve suggestions before adding them to the product roadmap.
+
+## Competitor Monitoring
+
+Provide configurable scheduled research jobs.
+
+Admin can select competitors and monitoring frequency.
+
+Display new findings and relevant changes in the admin dashboard.
+
+Do not send duplicate alerts for unchanged information.
+
+---
+
+# 24. COUPONS, REFERRALS AND AFFILIATE MANAGEMENT
+
+Build additional SaaS growth tools.
+
+## Coupon Management
+
+Admin can:
+
+- Create coupon codes.
+- Set percentage discounts.
+- Set fixed discounts.
+- Set expiration dates.
+- Set usage limits.
+- Restrict coupons to selected plans.
+
+## Referral System
+
+Users can:
+
+- Generate referral links.
+- Invite friends.
+- Track successful referrals.
+- View referral rewards.
+
+Admin controls referral rewards and eligibility.
+
+## Affiliate Management
+
+Admin can:
+
+- Create affiliate accounts.
+- Set commission percentages.
+- Track referrals.
+- Track subscriptions generated.
+- View commissions.
+- Manage payouts.
+
+Do not automatically approve suspicious referrals.
+
+---
+
+# 25. NOTIFICATIONS AND EMAIL SYSTEM
+
+Implement notifications for:
+
+- Resume generation completed.
+- AI analysis completed.
+- Subscription activated.
+- Subscription renewal.
+- Payment failure.
+- Low AI credits.
+- Upcoming interviews.
+- Job follow-up reminders.
+- Learning roadmap reminders.
+
+Support:
+
+- In-app notifications.
+- Email notifications.
+
+Allow users to configure notification preferences.
+
+---
+
+# 26. DATABASE ARCHITECTURE
+
+Use PostgreSQL with SQLAlchemy.
+
+Create properly normalized models.
+
+### User Management
+- users
+- user_profiles
+- user_roles
+- user_settings
+
+### Resume Management
+- uploaded_resumes
+- extracted_resume_data
+- resume_profiles
+- tailored_resumes
+- resume_versions
+- resume_templates
+
+### Job Analysis
+- job_descriptions
+- job_requirements
+- resume_analyses
+- job_required_skills
+- user_skills
+- skill_gap_analyses
+- skill_gap_items
+- skill_recommendations
+
+### Career Development
+- learning_roadmaps
+- learning_roadmap_items
+- user_skill_progress
+- career_readiness_reports
+- career_goals
+
+### AI Interview
+- interview_sessions
+- interview_questions
+- interview_answers
+- interview_evaluations
+
+### Job Tracking
+- saved_jobs
+- job_applications
+- application_activities
+- application_reminders
+
+### AI Documents
+- cover_letters
+- linkedin_profiles
+- portfolio_sites
+
+### AI Configuration
+- ai_providers
+- ai_models
+- ai_task_configurations
+- ai_usage_logs
+
+### Subscription
+- subscription_plans
+- plan_features
+- plan_ai_models
+- user_subscriptions
+- subscription_transactions
+- payment_history
+- invoices
+- subscription_usage
+- user_credits
+- credit_transactions
+- coupons
+
+### Admin and Business
+- admin_users
+- system_settings
+- audit_logs
+- notifications
+- referrals
+- affiliate_accounts
+- affiliate_commissions
+
+### Competitor Intelligence
+- competitors
+- competitor_features
+- competitor_research
+- competitor_insights
+- product_improvement_suggestions
+
+Use:
+- UUID primary keys.
+- Proper foreign keys.
+- Database indexes.
+- Created and updated timestamps.
+- Unique constraints.
+- Soft deletion where appropriate.
+- Alembic migrations.
+
+Avoid unnecessary duplicate data.
+
+---
+
+# 27. BACKEND ARCHITECTURE
+
+Use modular FastAPI architecture.
+
+Suggested structure:
+
+backend/
+    app/
+        main.py
+        core/
+            config.py
+            security.py
+            database.py
+            permissions.py
+        api/
+            v1/
+                routes/
+        models/
+        schemas/
+        repositories/
+        services/
+            auth/
+            resume/
+            ats/
+            job_analysis/
+            skill_gap/
+            career/
+            interview/
+            cover_letter/
+            linkedin/
+            portfolio/
+            job_tracker/
+            subscription/
+            billing/
+            notifications/
+            competitor/
+            ai_engine/
+        integrations/
+            ai_providers/
+            payment_providers/
+            job_sources/
+        tasks/
+        middleware/
+        utils/
+    migrations/
+    tests/
+    Dockerfile
+    requirements.txt
+    .env.example
+
+Use API versioning.
+
+Examples:
+
+/api/v1/auth/
+/api/v1/users/
+/api/v1/resumes/
+/api/v1/jobs/
+/api/v1/ats/
+/api/v1/skill-gap/
+/api/v1/career/
+/api/v1/interviews/
+/api/v1/cover-letters/
+/api/v1/portfolio/
+/api/v1/applications/
+/api/v1/subscriptions/
+/api/v1/billing/
+/api/v1/admin/
+/api/v1/competitors/
+
+Generate Swagger/OpenAPI documentation.
+
+---
+
+# 28. CENTRALIZED AI ENGINE
+
+Create a reusable provider-independent AI engine.
+
+Do not connect AI providers directly inside individual API routes.
+
+Use a common provider adapter interface.
+
+AI request workflow:
+
+1. Identify the requested task.
+2. Load active AI configuration from PostgreSQL.
+3. Check user subscription permissions.
+4. Check available credits.
+5. Select the configured AI model.
+6. Load credentials securely.
+7. Build the appropriate task-specific prompt.
+8. Execute the AI request.
+9. Validate the response.
+10. Handle provider failures.
+11. Use fallback models when configured.
+12. Record token usage.
+13. Calculate estimated costs.
+14. Deduct credits according to configured rules.
+15. Save the result and usage logs.
+
+Implement:
+- Timeouts.
+- Retries.
+- Rate limiting.
+- Error handling.
+- Fallback providers.
+- Structured JSON outputs.
+- Response validation.
+
+Never expose provider API keys to users.
+
+Allow the admin to configure different AI models for different tasks.
+
+---
+
+# 29. SECURITY REQUIREMENTS
+
+Implement:
+
+- Secure password hashing.
+- JWT authentication.
+- Role-based access control.
+- Strict user data isolation.
+- File validation.
+- File size restrictions.
+- Secure file downloads.
+- API rate limiting.
+- AI usage limits.
+- Payment webhook verification.
+- Encryption of API credentials.
+- Audit logging.
+- Secure environment variables.
+- Input validation.
+- Protection against prompt injection.
+- Protection against malicious document uploads.
+- Secure error messages.
+- Account deletion and data retention controls.
+
+Treat uploaded CVs and job descriptions as untrusted data, not instructions for the AI system.
+
+Use private document storage and short-lived download URLs where appropriate.
+
+---
+
+# 30. PERFORMANCE AND SCALABILITY
+
+- Use asynchronous FastAPI operations appropriately.
+- Avoid blocking API requests during long-running AI tasks.
+- Use background workers for document processing and other long-running operations.
+- Introduce Redis and Celery when justified by workload.
+- Implement pagination.
+- Optimize database queries.
+- Cache safe, non-sensitive data.
+- Store documents outside PostgreSQL.
+- Implement database backups.
+- Support concurrent users.
+- Implement monitoring and error tracking.
+
+Do not introduce expensive infrastructure unnecessarily during the MVP stage.
+
+---
+
+# 31. UI/UX DESIGN REQUIREMENTS
+
+Create a premium modern SaaS design.
+
+Design inspiration:
+- Linear.
+- Notion.
+- Modern AI productivity platforms.
+- Professional career development dashboards.
+
+Design requirements:
+
+- Clean and minimal interface.
+- Professional typography.
+- Responsive desktop and mobile layouts.
+- Consistent spacing.
+- Clear navigation.
+- Interactive dashboards.
+- Charts and progress indicators.
+- Professional empty states.
+- Loading states.
+- Error states.
+- Accessible components.
+
+Avoid cluttered dashboards.
+
+Use reusable components and a consistent design system.
+
+Provide separate user and admin experiences.
+
+---
+
+# 32. DEVELOPMENT AND IMPLEMENTATION PHASES
+
+Do not attempt to implement every feature in one unstructured development process.
+
+Build in phases.
+
+## Phase 1 – Foundation
+- Project setup.
+- Database setup.
+- Authentication.
+- User profiles.
+- Admin roles.
+- Basic dashboard.
+- AI provider architecture.
+
+## Phase 2 – Resume Engine
+- CV upload.
+- PDF/DOCX parsing.
+- Structured extraction.
+- Resume profiles.
+- Job description processing.
+
+## Phase 3 – ATS and Skill Analysis
+- ATS compatibility analyzer.
+- Keyword analysis.
+- Skill gap analysis.
+- Career readiness reports.
+- AI recommendations.
+
+## Phase 4 – Resume Generation
+- AI resume tailoring.
+- Resume editor.
+- Templates.
+- PDF/DOCX generation.
+- Resume history.
+
+## Phase 5 – AI Administration
+- Provider management.
+- Model management.
+- Task-specific AI configuration.
+- AI fallback.
+- Usage monitoring.
+- Cost analytics.
+
+## Phase 6 – Subscription and Payments
+- Dynamic subscription plans.
+- Credit system.
+- Usage enforcement.
+- Payment integration.
+- Coupons.
+- Invoices.
+
+## Phase 7 – Career Development
+- Learning roadmap.
+- Career assistant.
+- Career recommendations.
+- LinkedIn optimization.
+- Cover letter generator.
+
+## Phase 8 – Interview and Job Tools
+- Mock interviews.
+- Voice interview.
+- Job recommendations.
+- Job application tracker.
+
+## Phase 9 – Portfolio and Insights
+- Portfolio generator.
+- Salary insights.
+- Career path recommendations.
+
+## Phase 10 – Admin Intelligence
+- Competitor management.
+- Competitor research.
+- AI competitor insights.
+- Product improvement recommendations.
+- Referral and affiliate management.
+
+## Phase 11 – Production
+- Security testing.
+- Automated testing.
+- Performance optimization.
+- Docker.
+- Deployment.
+- Monitoring.
+- Backup and recovery.
+
+---
+
+# 33. IMPORTANT DEVELOPMENT RULES
+
+Follow these rules throughout implementation:
+
+1. Analyze the project before making changes.
+2. Do not overwrite existing working code without understanding it.
+3. Use clean and modular architecture.
+4. Follow Python and TypeScript best practices.
+5. Use reusable frontend components.
+6. Separate business logic from API routes.
+7. Use proper database migrations.
+8. Validate every API request.
+9. Implement actual backend functionality.
+10. Never create fake buttons or placeholder functionality presented as complete.
+11. Add automated tests for critical business logic.
+12. Document all REST endpoints.
+13. Provide an example environment configuration.
+14. Provide Docker configuration.
+15. Document deployment steps.
+16. Implement proper loading, error, and empty states.
+17. Never expose secrets in source code.
+18. Keep subscription permissions and AI configuration dynamic.
+19. Avoid unnecessary dependencies and infrastructure.
+20. Verify each feature before moving to the next phase.
+
+If working with an existing repository, first inspect its structure, dependencies, database, and existing implementation. Preserve existing functionality and make changes incrementally.
+
+Before starting each phase:
+
+- Explain the implementation plan.
+- Identify database changes.
+- Identify backend endpoints.
+- Identify frontend components.
+- Implement the functionality.
+- Run tests.
+- Fix errors.
+- Verify the feature.
+
+Do not claim a feature is complete until it has been tested.
+
+---
+
+# 34. FINAL PRODUCT OBJECTIVE
+
+Build a complete AI Career Assistant SaaS platform that provides users with everything they need throughout their career development and job application journey.
+
+The platform must have five major pillars:
+
+1. CREATE
+   - AI Resume Builder.
+   - ATS Resume Optimization.
+   - Cover Letter Generator.
+   - LinkedIn Optimizer.
+   - Portfolio Generator.
+
+2. ANALYZE
+   - ATS Scanner.
+   - Job Compatibility Analysis.
+   - Skill Gap Analysis.
+   - Career Readiness Reports.
+
+3. IMPROVE
+   - AI Career Assistant.
+   - Personalized Learning Roadmaps.
+   - Skill Recommendations.
+   - Career Path Suggestions.
+
+4. PREPARE
+   - AI Mock Interviews.
+   - Voice Interviews.
+   - Technical Interview Preparation.
+   - Interview Evaluation.
+
+5. APPLY
+   - Job Recommendations.
+   - Job Application Tracker.
+   - Recruiter Email Generator.
+   - Follow-up Reminders.
+   - Career and Salary Insights.
+
+The admin team must have complete control over:
+
+- AI providers.
+- AI models.
+- Model assignments.
+- API credentials.
+- Subscription plans.
+- Pricing.
+- Credits.
+- Feature permissions.
+- User management.
+- Competitor intelligence.
+- System configuration.
+
+All major features must be connected to actual backend APIs and PostgreSQL.
+
+The final product must be secure, scalable, maintainable, cost-efficient, and production-ready.
+
+Prioritize delivering a working MVP first, followed by the advanced modules.
+
+Do not stop at a frontend prototype. Build the actual application, backend, database, AI integrations, document processing, billing architecture, and functional user workflows.
