@@ -1,8 +1,10 @@
 from sqlalchemy.orm import Session
 
 from app.core.security import create_access_token, create_refresh_token, hash_password, verify_password
+from app.models.subscription import UserSubscription
 from app.models.user import User
 from app.schemas.user import TokenPair, UserLogin, UserRegister
+from app.services.plan_seed import get_free_plan
 
 
 class AuthError(Exception):
@@ -21,6 +23,11 @@ def register_user(db: Session, data: UserRegister) -> User:
         role="user",
     )
     db.add(user)
+    db.flush()
+
+    free_plan = get_free_plan(db)
+    db.add(UserSubscription(user_id=user.id, plan_id=free_plan.id))
+
     db.commit()
     db.refresh(user)
     return user

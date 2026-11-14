@@ -133,8 +133,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 StatCard(label: 'Generated Resumes', value: '${summary.totalGeneratedResumes}'),
                 StatCard(label: 'Saved Jobs', value: '${summary.savedJobs}'),
                 StatCard(label: 'Upcoming Interviews', value: '${summary.upcomingInterviews}'),
-                StatCard(label: 'AI Credits', value: '${summary.remainingAiCredits}'),
+                StatCard(
+                  label: summary.creditResetPeriod == 'lifetime' ? 'AI Credits Remaining' : 'AI Credits This Month',
+                  value: '${summary.remainingAiCredits}',
+                ),
                 StatCard(label: 'Plan', value: summary.subscriptionPlan ?? 'Free'),
+                StatCard(label: 'Model Tier', value: summary.aiModelTier),
               ],
             ),
         ],

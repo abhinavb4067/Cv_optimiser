@@ -27,6 +27,8 @@ interface Summary {
   upcoming_interviews: number;
   subscription_plan: string | null;
   remaining_ai_credits: number;
+  credit_reset_period: string;
+  ai_model_tier: string;
 }
 
 export default function Dashboard() {
@@ -75,8 +77,12 @@ export default function Dashboard() {
             <StatCard label="Generated Resumes" value={summary.total_generated_resumes} />
             <StatCard label="Saved Jobs" value={summary.saved_jobs} />
             <StatCard label="Upcoming Interviews" value={summary.upcoming_interviews} />
-            <StatCard label="AI Credits Remaining" value={summary.remaining_ai_credits} />
+            <StatCard
+              label={summary.credit_reset_period === "lifetime" ? "AI Credits Remaining" : "AI Credits This Month"}
+              value={summary.remaining_ai_credits}
+            />
             <StatCard label="Subscription Plan" value={summary.subscription_plan ?? "Free"} />
+            <StatCard label="AI Model Tier" value={summary.ai_model_tier} />
           </div>
         )}
       </main>

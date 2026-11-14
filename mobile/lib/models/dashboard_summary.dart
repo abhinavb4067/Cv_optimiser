@@ -5,6 +5,8 @@ class DashboardSummary {
   final int upcomingInterviews;
   final String? subscriptionPlan;
   final int remainingAiCredits;
+  final String creditResetPeriod;
+  final String aiModelTier;
 
   DashboardSummary({
     required this.totalUploadedResumes,
@@ -13,6 +15,8 @@ class DashboardSummary {
     required this.upcomingInterviews,
     required this.subscriptionPlan,
     required this.remainingAiCredits,
+    required this.creditResetPeriod,
+    required this.aiModelTier,
   });
 
   factory DashboardSummary.fromJson(Map<String, dynamic> json) {
@@ -23,6 +27,8 @@ class DashboardSummary {
       upcomingInterviews: json['upcoming_interviews'] as int,
       subscriptionPlan: json['subscription_plan'] as String?,
       remainingAiCredits: json['remaining_ai_credits'] as int,
+      creditResetPeriod: json['credit_reset_period'] as String,
+      aiModelTier: json['ai_model_tier'] as String,
     );
   }
 }

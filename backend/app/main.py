@@ -3,8 +3,19 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.v1.api import api_router
 from app.core.config import settings
+from app.core.database import SessionLocal
+from app.services.plan_seed import seed_default_plans
 
 app = FastAPI(title=settings.app_name)
+
+
+@app.on_event("startup")
+def on_startup() -> None:
+    db = SessionLocal()
+    try:
+        seed_default_plans(db)
+    finally:
+        db.close()
 
 app.add_middleware(
     CORSMiddleware,
